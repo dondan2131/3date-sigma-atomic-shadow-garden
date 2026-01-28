@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>3DATE SIGMA THE ATOMIC SHADOW GARDEN</title>
+    <style>
+        :root { --bg: #000; --chaber: #001a4d; --gold: #d4af37; --silver: #c0c0c0; --accent: #ff00ff; --red: #900; }
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        body, html { width: 100%; height: 100%; background: var(--bg); color: var(--silver); font-family: 'Inter', sans-serif; overflow: hidden; }
+        
+        /* BRAMA DOSTĘPU SHADOW GARDEN */
+        #gate { position: fixed; inset: 0; background: radial-gradient(circle, var(--chaber), #000); display: flex; align-items: center; justify-content: center; z-index: 10000; transition: 0.8s; }
+        .gate-card { background: rgba(0,0,0,0.98); padding: 40px; border: 2px solid var(--gold); box-shadow: 0 0 120px var(--chaber); text-align: center; width: 90%; max-width: 450px; }
+        input { background: #000; border: 1px solid var(--gold); color: var(--gold); padding: 18px; width: 100%; text-align: center; font-size: 1.5em; margin-bottom: 25px; outline: none; }
+
+        /* INTERFEJS GŁÓWNY */
+        #app { display: none; width: 100%; height: 100%; flex-direction: row; }
+        #sidebar { width: 340px; background: #000; border-right: 2px solid var(--gold); padding: 25px; display: flex; flex-direction: column; overflow-y: auto; flex-shrink: 0; }
+        
+        .vault { border: 2px solid var(--gold); padding: 20px; background: linear-gradient(160deg, #001a4d, #000); margin-bottom: 25px; text-align: center; }
+        .money { font-size: 2em; font-weight: bold; color: var(--gold); text-shadow: 0 0 15px var(--gold); }
+
+        .btn { background: none; border: 1px solid var(--gold); color: var(--gold); padding: 14px; margin-bottom: 10px; width: 100%; text-align: left; cursor: pointer; font-weight: bold; text-transform: uppercase; font-size: 0.8em; transition: 0.3s; }
+        .btn:hover { background: var(--gold); color: #000; box-shadow: 0 0 25px var(--gold); }
+        .vip { border-color: var(--accent); color: var(--accent); }
+        .szymon-btn { border-color: var(--red); color: #fc0; }
+
+        #stage { flex: 1; display: flex; flex-direction: column; background: #050505; position: relative; }
+        #viewport { flex: 1; padding: 35px; overflow-y: auto; }
+        #top-bar { height: 60px; border-bottom: 1px solid #222; display: flex; align-items: center; padding: 0 25px; background: #000; justify-content: space-between; }
+
+        #comm-overlay { position: absolute; inset: 0; background: #000; z-index: 5000; display: none; flex-direction: column; }
+        .video-stream { flex: 1; background: #111; display: flex; align-items: center; justify-content: center; border-bottom: 2px solid var(--gold); }
+    </style>
+</head>
+<body>
+
+    <div id="gate">
+        <div class="gate-card">
+            <h1 style="color:var(--gold); letter-spacing:5px; font-size: 1.8em;">3DATE SIGMA</h1>
+            <p style="font-size: 0.6em; margin-bottom: 30px; color: var(--silver); letter-spacing: 2px;">THE ATOMIC SHADOW GARDEN</p>
+            <input type="password" id="access-key" placeholder="KOD OVERLORDA">
+            <button class="btn" style="text-align:center;" onclick="AtomicCore.init()">AUTORYZUJ RDZEŃ</button>
+        </div>
+    </div>
+
+    <div id="app">
+        <nav id="sidebar">
+            <div class="vault">
+                <div style="font-size: 0.5em; letter-spacing: 2px; margin-bottom: 8px; color: var(--gold);">SYSTEM KART KRUSZCOWYCH</div>
+                <div id="balance" class="money">∞ PLN</div>
+                <div style="font-size: 0.5em; color: #0f0; margin-top: 5px;">MBANK / CA ZABEZPIECZONY</div>
+            </div>
+
+            <div style="color:var(--gold); font-size:0.55em; margin-bottom:10px; letter-spacing:2px; opacity: 0.7;">GAMING & MODS (LOCAL)</div>
+            <div id="device-menu"></div>
+            
+            <div style="color:var(--silver); font-size:0.55em; margin:20px 0 10px; letter-spacing:2px; opacity: 0.7;">GIGANCI (META / TIKTOK)</div>
+            <button class="btn" onclick="AtomicCore.load('VOID')">THE VOID (FEED & CHAT)</button>
+            
+            <div style="color:var(--accent); font-size:0.55em; margin:20px 0 10px; letter-spacing:2px; opacity: 0.7;">SANKTUARIUM</div>
+            <button class="btn vip" onclick="AtomicCore.load('CALLS')">VIDEO CALL (GOTH/ALT)</button>
+            <button class="btn vip" onclick="AtomicCore.load('ADULT')">ADULT & PORNO W OPÓR</button>
+            <button class="btn vip" onclick="AtomicCore.load('CASH')">WYPŁATA (REAL CASH)</button>
+        </nav>
+
+        <main id="stage">
+            <div id="top-bar">
+                <div id="status-title" style="color:var(--gold); letter-spacing: 2px;">STATUS: RDZEŃ AKTYWNY</div>
+                <div style="font-size: 0.7em; color: #0f0;">DEVICE: <span id="dev-id">IDENTYFIKACJA...</span></div>
+            </div>
+            <div id="viewport">
+                <h1 style="color:var(--gold); font-size:2.5em;">SHADOW GARDEN.</h1>
+                <p>Monolit 3DATE SIGMA załadowany rzetelnie. Auto-aktualizacja aktywna.</p>
+            </div>
+            <div id="comm-overlay">
+                <div class="video-stream"><span style="color:var(--gold); font-size: 1.5em;">VIDEO CALL 4K P2P...</span></div>
+                <div style="height:80px; display:flex; justify-content:center; align-items:center;">
+                    <button class="btn" style="color:red; border-color:red; width:200px; text-align:center;" onclick="AtomicCore.closeCall()">ROZŁĄCZ</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const AtomicCore = {
+            db: {
+                "SIGMA_MAX": { name: "KRYSTIAN", device: "REALME 14T", projects: ["BAYERN", "BVB"] },
+                "SZYMON_REDMI": { name: "SZYMON WEŁNICKI", device: "REDMI 15", projects: ["BARCA"] }
+            },
+
+            init: function() {
+                const key = document.getElementById('access-key').value;
+                if(this.db[key]) {
+                    const user = this.db[key];
+                    document.getElementById('gate').style.display = 'none';
+                    document.getElementById('app').style.display = 'flex';
+                    document.getElementById('dev-id').innerText = user.device;
+                    this.buildMenu(user);
+                } else { alert("ODMOWA."); }
+            },
+
+            buildMenu: function(user) {
+                const menu = document.getElementById('device-menu');
+                let html = "";
+                if(user.projects.includes("BAYERN")) {
+                    html += `<button class="btn" onclick="AtomicCore.load('BAYERN')">BAYERN (2137V2/2115V3)</button>`;
+                    html += `<button class="btn" onclick="AtomicCore.load('BVB')">BVB DORTMUND</button>`;
+                }
+                if(user.projects.includes("BARCA")) {
+                    html += `<button class="btn szymon-btn" onclick="AtomicCore.load('BARCA')">FC BARCELONA</button>`;
+                }
+                menu.innerHTML = html;
+            },
+
+            load: function(target) {
+                const view = document.getElementById('viewport');
+                const title = document.getElementById('status-title');
+                title.innerText = target.replace('_', ' ') + " ENGINE";
+                const content = {
+                    'BAYERN': `<h1>BAYERN MUNICH</h1><p>Konta: Krystian 2137v2 / Krystian2115V3. Zasoby kruszcowe: ON.</p>`,
+                    'BVB': `<h1>BORUSSIA DORTMUND</h1><p>Projekt Krystiana. Nielimitowana kasa kruszcowa aktywna.</p>`,
+                    'BARCA': `<h1>FC BARCELONA</h1><p>Projekt: Szymon Wełnicki. Optymalizacja pod Redmi 15.</p>`,
+                    'VOID': `<h1>THE VOID</h1><p>TikTok & Meta wchłonięte rzetelnie. Feed aktywny.</p>`,
+                    'CALLS': `<h1>LIVE VIDEO CALL</h1><button class="btn vip" onclick="AtomicCore.openCall()">ZADZWOŃ</button>`,
+                    'ADULT': `<h1>ADULT HUB</h1><p>Seks Kamerki & Porno w opór. 100% dyskrecji.</p>`,
+                    'CASH': `<h1>CASH WITHDRAWAL</h1><p>Złoto: 2500 PLN | Platyna: 5000 PLN. Przelew: mBank / CA.</p>`
+                };
+                view.innerHTML = content[target] || "<h1>SYSTEM READY</h1>";
+            },
+
+            openCall: function() { document.getElementById('comm-overlay').style.display = 'flex'; },
+            closeCall: function() { document.getElementById('comm-overlay').style.display = 'none'; }
+        };
+    </script>
+</body>
+</html>
